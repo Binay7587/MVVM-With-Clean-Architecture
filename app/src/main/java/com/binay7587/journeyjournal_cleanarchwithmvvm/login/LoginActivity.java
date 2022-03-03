@@ -54,8 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     private void onLoginButtonClicked() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-        LoginModel loginModel = new LoginModel(email, password);
-        loginViewModel.validateLoginCredentials(loginModel);
+        loginViewModel.validateLoginCredentials(email, password);
     }
 
     private void observeMutableLiveData() {
@@ -125,6 +124,12 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT
                             ).show();
                             startHome();
+                        }else {
+                            Toast.makeText(
+                                    LoginActivity.this,
+                                    "Login Failed",
+                                    Toast.LENGTH_SHORT
+                            ).show();
                         }
                     }
                 });

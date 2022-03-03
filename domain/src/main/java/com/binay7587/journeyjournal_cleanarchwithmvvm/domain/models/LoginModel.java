@@ -13,6 +13,14 @@ public class LoginModel {
         return user;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public boolean isLoginSuccess() {
+        return isLoginSuccess;
+    }
+
     public void setUser(UserModel user) {
         this.user = user;
     }
