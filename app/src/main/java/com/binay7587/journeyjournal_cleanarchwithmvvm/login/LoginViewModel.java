@@ -3,6 +3,11 @@ package com.binay7587.journeyjournal_cleanarchwithmvvm.login;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.binay7587.journeyjournal_cleanarchwithmvvm.data.repositories.LoginRepoImplementation;
+import com.binay7587.journeyjournal_cleanarchwithmvvm.domain.usecases.LoginAuthenticationUseCase;
+import com.binay7587.journeyjournal_cleanarchwithmvvm.framework.LoginLocalDataSourceImplementation;
+import com.binay7587.journeyjournal_cleanarchwithmvvm.framework.LoginRemoteDataSourceImplementation;
+
 /**
  * Created by Binaya Karki on 03,March,2022.
  */
@@ -12,6 +17,7 @@ public class LoginViewModel extends ViewModel {
     final MutableLiveData<Boolean> isPasswordIncorrect = new MutableLiveData<>();
     final MutableLiveData<Boolean> isLoginSuccess = new MutableLiveData<>();
 
+    private LoginAuthenticationUseCase loginAuthenticationUseCase = new LoginAuthenticationUseCase(new LoginRepoImplementation(new LoginRemoteDataSourceImplementation(), new LoginLocalDataSourceImplementation()));
 
     public void validateLoginCredentials(LoginModel loginModel) {
         String emailAddress = loginModel.getEmailAddress();
@@ -38,4 +44,5 @@ public class LoginViewModel extends ViewModel {
         }
         isLoginSuccess.setValue(true);
     }
+
 }
