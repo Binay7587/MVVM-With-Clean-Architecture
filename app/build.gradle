@@ -42,4 +42,9 @@ dependencies {
     // Update data in realtime
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:2.5.0-alpha03"
+    // importing data and domain layer
+    // Data shouldn't be imported here
+    // We are importing because we are not using any dependency injection like dagger helt
+    implementation project(':data')
+    implementation project(':domain')
 }
